@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap');
+=======
+@import url('[https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap](https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap)');
+>>>>>>> origin/main
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+<<<<<<< HEAD
 :root {
   /* LaunchPad Theme Variables */
   --space-black: #020617;
@@ -32,10 +37,22 @@ body {
   animation: enter 0.4s ease-out; 
 } 
 
+=======
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: #f8fafc;
+}
+
+/* Custom animation we had in the original file */
+.animate-in { 
+  animation: enter 0.4s ease-out; 
+} 
+>>>>>>> origin/main
 @keyframes enter { 
   from { opacity: 0; transform: scale(0.95) translateY(10px); } 
   to { opacity: 1; transform: scale(1) translateY(0); } 
 }
+<<<<<<< HEAD
 
 /* Text Gradient Utility */
 .text-gradient {
@@ -44,3 +61,5 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+=======
+>>>>>>> origin/main

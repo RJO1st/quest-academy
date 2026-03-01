@@ -5,6 +5,7 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+<<<<<<< HEAD
     extend: {
       colors: {
         // This connects your Tailwind classes to your CSS variables
@@ -15,6 +16,9 @@ module.exports = {
         starlight: 'var(--starlight)', // Use as: bg-starlight
       }
     },
+=======
+    extend: {},
+>>>>>>> origin/main
   },
   plugins: [],
 }

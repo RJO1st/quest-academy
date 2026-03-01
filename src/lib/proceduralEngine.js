@@ -96,6 +96,10 @@ export const getExplanationForQuestion = (question) => {
   if (!question?.vars || !question?.topic || question.subject !== 'maths') return null;
   const { vars, topic } = question;
   
+<<<<<<< HEAD
+=======
+  // Base topic resolution (e.g. if topic is 'addition', check for 'addition_with_carry' via detect)
+>>>>>>> origin/main
   const baseTopic = topic.split('_')[0]; 
   const availableTemplates = Object.keys(mathsTemplates)
        .filter(k => k.startsWith(baseTopic))
@@ -110,6 +114,7 @@ export const getExplanationForQuestion = (question) => {
 };
 
 // --- DATA LISTS ---
+<<<<<<< HEAD
 const NOUNS = [
   "lion", "eagle", "castle", "knight", "ocean", "mountain", "forest", "dragon", 
   "wizard", "river", "pirate", "astronaut", "robot", "dinosaur", "unicorn", 
@@ -243,16 +248,30 @@ export const generateLocalMaths = (year, difficultyMultiplier = 1) => {
   }
 
   // ---- Year 3+ (original logic, unchanged) ----
+=======
+const NOUNS = ["lion", "eagle", "castle", "knight", "ocean", "mountain", "forest"];
+const ADJS = ["fierce", "brave", "ancient", "mysterious", "dark", "gleaming", "silent"];
+const VERBS = ["roared", "soared", "crumbled", "fought", "crashed", "stood", "whispered"];
+const ADVERBS = ["loudly", "gracefully", "slowly", "bravely", "violently", "firmly"];
+
+// --- UPGRADED LOCAL GENERATORS ---
+export const generateLocalMaths = (year, difficultyMultiplier = 1) => {
+>>>>>>> origin/main
   const op = Math.random();
   let q, ans, exp, visual, hints, topic;
   const maxNum = Math.floor(year * 25 * difficultyMultiplier); 
   let a, b;
 
+<<<<<<< HEAD
   if (op < 0.3) { // Addition
+=======
+  if (op < 0.25) {
+>>>>>>> origin/main
     a = Math.floor(Math.random() * maxNum) + (year * 5);
     b = Math.floor(Math.random() * maxNum) + 1;
     ans = a + b;
     topic = 'addition';
+<<<<<<< HEAD
     const phrases = [
       `Calculate: ${a} + ${b}`,
       `What is ${a} plus ${b}?`,
@@ -264,10 +283,18 @@ export const generateLocalMaths = (year, difficultyMultiplier = 1) => {
     hints = [`Try adding ${b} to ${a}.`, `Add the tens first, then the units.`, `The answer is ${ans}.`];
     if (year <= 2 && ans <= 20) visual = `${Array(a).fill("🟦").join("")} + ${Array(b).fill("🟧").join("")}`;
   } else if (op < 0.55) { // Subtraction
+=======
+    q = `Calculate: ${a} + ${b}`;
+    exp = `Add the units, then the tens. ${a} + ${b} = ${ans}.`;
+    hints = [`Try adding ${b} to ${a}.`, `Add the tens first, then the units.`, `The answer is ${ans}.`];
+    if (year <= 2 && ans <= 20) visual = `${Array(a).fill("🟦").join("")} + ${Array(b).fill("🟧").join("")}`;
+  } else if (op < 0.5) {
+>>>>>>> origin/main
     a = Math.floor(Math.random() * maxNum) + 30;
     b = Math.floor(Math.random() * a) + 1;
     ans = a - b;
     topic = 'subtraction';
+<<<<<<< HEAD
     const phrases = [
       `Calculate: ${a} - ${b}`,
       `What is ${a} minus ${b}?`,
@@ -278,10 +305,17 @@ export const generateLocalMaths = (year, difficultyMultiplier = 1) => {
     exp = `Subtract ${b} from ${a} to get ${ans}.`;
     hints = [`You are taking ${b} away from ${a}.`, `Count backwards.`, `The answer is ${ans}.`];
   } else if (op < 0.8) { // Multiplication
+=======
+    q = `Calculate: ${a} - ${b}`;
+    exp = `Subtract ${b} from ${a} to get ${ans}.`;
+    hints = [`You are taking ${b} away from ${a}.`, `Count backwards.`, `The answer is ${ans}.`];
+  } else if (op < 0.75) {
+>>>>>>> origin/main
     a = Math.floor(Math.random() * (year + 8 * difficultyMultiplier)) + 2;
     b = Math.floor(Math.random() * 12) + 2;
     ans = a * b;
     topic = 'multiplication';
+<<<<<<< HEAD
     const phrases = [
       `What is ${a} × ${b}?`,
       `Multiply ${a} by ${b}.`,
@@ -292,11 +326,18 @@ export const generateLocalMaths = (year, difficultyMultiplier = 1) => {
     exp = `${a} groups of ${b} equals ${ans}.`;
     hints = [`Think of ${a} groups of ${b}.`, `The answer is ${ans}.`];
   } else { // Division
+=======
+    q = `What is ${a} × ${b}?`;
+    exp = `${a} groups of ${b} equals ${ans}.`;
+    hints = [`Think of ${a} groups of ${b}.`, `The answer is ${ans}.`];
+  } else {
+>>>>>>> origin/main
     b = Math.floor(Math.random() * (year + 6 * difficultyMultiplier)) + 2;
     const ansTemp = Math.floor(Math.random() * 12) + 2;
     a = b * ansTemp;
     ans = ansTemp;
     topic = 'division';
+<<<<<<< HEAD
     const phrases = [
       `Divide ${a} by ${b}`,
       `What is ${a} ÷ ${b}?`,
@@ -304,10 +345,14 @@ export const generateLocalMaths = (year, difficultyMultiplier = 1) => {
       `${a} ÷ ${b} = ?`
     ];
     q = phrases[Math.floor(Math.random() * phrases.length)];
+=======
+    q = `Divide ${a} by ${b}`;
+>>>>>>> origin/main
     exp = `Since ${b} × ${ans} = ${a}, ${a} ÷ ${b} = ${ans}.`;
     hints = [`How many times does ${b} fit into ${a}?`, `The answer is ${ans}.`];
   }
 
+<<<<<<< HEAD
   // Generate wrong options distinct from correct answer
   let wrong1 = ans + Math.floor(Math.random() * 5) + 1;
   let wrong2 = Math.max(0, ans - (Math.floor(Math.random() * 3) + 1));
@@ -333,12 +378,25 @@ export const generateLocalMaths = (year, difficultyMultiplier = 1) => {
 
 export const generateRealWorldMaths = (year, difficultyMultiplier = 1) => {
   const items = ["video game", "bicycle", "skateboard", "book set", "toy spaceship", "art kit", "soccer ball", "puzzle", "comic books"];
+=======
+  const wrong1 = ans + Math.floor(Math.random() * 5) + 1;
+  const wrong2 = ans - (Math.floor(Math.random() * 3) + 1);
+  const wrong3 = ans + 10;
+  const opts = shuffle([String(ans), String(wrong1), String(wrong2), String(wrong3)]);
+  
+  return { q, opts, a: opts.indexOf(String(ans)), exp, subject: 'maths', visual, hints, vars: { a, b }, topic };
+};
+
+export const generateRealWorldMaths = (year, difficultyMultiplier = 1) => {
+  const items = ["video game", "bicycle", "skateboard", "book set"];
+>>>>>>> origin/main
   const item = items[Math.floor(Math.random() * items.length)];
   const cost = Math.floor(Math.random() * 30 * difficultyMultiplier) + 20;
   const savingsPerWeek = Math.floor(Math.random() * 5) + 2;
   const weeksNeeded = Math.ceil(cost / savingsPerWeek);
   
   const q = `Real World Challenge: You want to buy a ${item} that costs £${cost}. If you save £${savingsPerWeek} per week, how many weeks will it take to save enough money?`;
+<<<<<<< HEAD
   // Improved explanation: mention that you need to round up because you can't have a fraction of a week
   const exact = (cost / savingsPerWeek).toFixed(2);
   const exp = `You need to save at least £${cost}. Each week you save £${savingsPerWeek}. After 7 weeks you'd have £${savingsPerWeek * 7} (not enough). After ${weeksNeeded} weeks you'd have £${savingsPerWeek * weeksNeeded}. So you need ${weeksNeeded} weeks. (${cost} ÷ ${savingsPerWeek} = ${exact}, so you round up.)`;
@@ -426,6 +484,18 @@ export const generateLocalNVR = (year) => {
   const selected = templates[Math.floor(Math.random() * templates.length)];
   return { ...selected, subject: 'nvr', topic: 'patterns' };
 };
+=======
+  const exp = `Divide the total cost (£${cost}) by your weekly savings (£${savingsPerWeek}). ${cost} ÷ ${savingsPerWeek} = ${weeksNeeded}.`;
+  
+  const opts = shuffle([String(weeksNeeded), String(weeksNeeded + 1), String(weeksNeeded - 1), String(weeksNeeded + 2)]);
+  // Real world uses division conceptually, but visualizer isn't needed here.
+  return { q, opts, a: opts.indexOf(String(weeksNeeded)), exp, hints: ["Use division."], subject: 'maths', isRealWorld: true, vars: { a: cost, b: savingsPerWeek }, topic: 'division' };
+};
+
+export const generateLocalEnglish = (year) => { return { q: "English Sample", opts: ["A","B","C","D"], a: 0, exp: "Exp", subject: 'english' }; };
+export const generateLocalVerbal = (year) => { return { q: "Verbal Sample", opts: ["A","B","C","D"], a: 0, exp: "Exp", subject: 'verbal' }; };
+export const generateLocalNVR = (year) => { return { q: "NVR Sample", opts: ["A","B","C","D"], a: 0, exp: "Exp", subject: 'nvr' }; };
+>>>>>>> origin/main
 
 export const generateAIQuestions = async ({ year, region, subject, count, proficiency, previousQuestions }) => {
   try {
@@ -440,15 +510,21 @@ export const generateAIQuestions = async ({ year, region, subject, count, profic
   }
 };
 
+<<<<<<< HEAD
 // --- SESSION GENERATOR (with proper deduplication and logging) ---
 export const generateSessionQuestions = async (year, region, count, proficiency, subject, mistakes = [], previousQuestionIds = []) => {
   console.log(`[generateSessionQuestions] year=${year}, subject=${subject}, count=${count}, previousIds count=${previousQuestionIds.length}`);
 
+=======
+// --- SESSION GENERATOR ---
+export const generateSessionQuestions = async (year, region, count, proficiency, subject, mistakes = [], previousQs = []) => {
+>>>>>>> origin/main
   const mix = subject === "mock" 
     ? [ { s: "maths", n: Math.ceil(count * 0.35) }, { s: "english", n: Math.ceil(count * 0.35) }, { s: "verbal", n: Math.floor(count * 0.15) }, { s: "nvr", n: Math.floor(count * 0.15) } ]
     : [ { s: subject, n: count } ];
 
   const allQuestions = [];
+<<<<<<< HEAD
   const usedIds = new Set(previousQuestionIds);
 
   for (const { s, n } of mix) {
@@ -481,6 +557,20 @@ export const generateSessionQuestions = async (year, region, count, proficiency,
           console.log(`[generateSessionQuestions] Taking ${candidates.length} candidates`);
 
           for (const row of candidates) {
+=======
+  
+  for (const { s, n } of mix) {
+    let dbQuestions = [];
+
+    // TIER 1: Fetch from Supabase
+    try {
+      if (supabase) {
+        const { data, error } = await supabase.from('question_bank').select('*').ilike('subject', `%${s}%`).lte('year_level', year);
+
+        if (data && !error) {
+          const availableDbQs = data.filter(row => !previousQs.includes(row.question_text));
+          const processedDbQs = availableDbQs.map(row => {
+>>>>>>> origin/main
             let parsedOpts;
             try { parsedOpts = JSON.parse(row.options); } catch(e) { parsedOpts = ["A", "B", "C", "D"]; }
             
@@ -493,6 +583,7 @@ export const generateSessionQuestions = async (year, region, count, proficiency,
               adv: ADVERBS[Math.floor(Math.random() * ADVERBS.length)]
             };
             
+<<<<<<< HEAD
             const processedQ = processTemplateString(row.question_text, vars);
             const processedOpts = parsedOpts.map(opt => String(processTemplateString(opt, vars)));
             const correctIdx = parseInt(row.correct_index) || 0;
@@ -553,6 +644,52 @@ export const generateSessionQuestions = async (year, region, count, proficiency,
   const final = shuffle(allQuestions).slice(0, count);
   console.log(`[generateSessionQuestions] Final ${final.length} questions. DB IDs in final:`, final.filter(q => q.id).map(q => q.id));
   return final;
+=======
+            let processedQ = processTemplateString(row.question_text, vars);
+            return {
+              q: processedQ,
+              opts: parsedOpts.map(opt => String(processTemplateString(opt, vars))),
+              a: parseInt(row.correct_index) || 0,
+              exp: processTemplateString(row.explanation, vars) || "Correct answer.",
+              subject: s,
+              passage: row.passage ? processTemplateString(row.passage, vars) : null,
+              hints: ["Read the question carefully.", "Eliminate impossible answers."],
+              vars,             // <-- Inject variables for visualizer
+              topic: row.topic  // <-- Inject topic for visualizer
+            };
+          });
+          dbQuestions = shuffle(processedDbQs).slice(0, n);
+          allQuestions.push(...dbQuestions);
+        }
+      }
+    } catch (err) { console.warn("Vault fetch failed, relying on procedural engine:", err); }
+
+    // TIER 2 & 3: Fill any remaining questions with AI & Procedural
+    const remainingNeeded = n - dbQuestions.length;
+    if (remainingNeeded > 0) {
+      const aiCount = Math.floor(remainingNeeded * 0.20); 
+      const localCount = remainingNeeded - aiCount;
+      
+      if (aiCount > 0) {
+        const aiQs = await generateAIQuestions({ year, region, subject: s, count: aiCount, proficiency, previousQuestions: [...previousQs, ...allQuestions.map(q=>q.q)] });
+        allQuestions.push(...aiQs);
+      }
+      
+      const neededLocals = localCount + (aiCount > 0 ? aiCount - allQuestions.filter(q => q.subject === s).length + dbQuestions.length : 0);
+      for (let i = 0; i < neededLocals; i++) {
+        if (s === "maths") {
+          if (Math.random() > 0.8) allQuestions.push(generateRealWorldMaths(year));
+          else allQuestions.push(generateLocalMaths(year));
+        }
+        else if (s === "english") allQuestions.push(generateLocalEnglish(year));
+        else if (s === "verbal") allQuestions.push(generateLocalVerbal(year));
+        else if (s === "nvr") allQuestions.push(generateLocalNVR(year));
+      }
+    }
+  }
+
+  return shuffle(allQuestions).slice(0, count);
+>>>>>>> origin/main
 };
 
 export const fetchClaudeResponse = async (prompt, system) => {
@@ -566,4 +703,8 @@ export const fetchClaudeResponse = async (prompt, system) => {
   } catch (err) {
     return "Tara says: That's a great effort! Explaining your thinking is the secret to becoming a master scholar. ✨ Keep going!";
   }
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> origin/main

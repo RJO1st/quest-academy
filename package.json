@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.98.0",
     "dotenv": "^17.3.1",
@@ -22,5 +23,17 @@
     "postcss": "latest",
     "tailwindcss": "latest",
     "typescript": "5.9.3"
+=======
+    "@supabase/ssr": "latest",
+    "@supabase/supabase-js": "latest",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "autoprefixer": "latest",
+    "postcss": "latest",
+    "tailwindcss": "latest"
+>>>>>>> origin/main
   }
 }
